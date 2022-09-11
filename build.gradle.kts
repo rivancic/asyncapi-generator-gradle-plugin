@@ -1,29 +1,25 @@
-import com.github.gradle.node.npm.task.NpxTask
-
 plugins {
-    base
-    id("com.github.node-gradle.node") version "3.4.0"
+  id("com.gradle.plugin-publish") version "1.0.0"
 }
 
-val downloadNode = true
-val asyncApiFile = "https://bit.ly/asyncapi"
-val asyncApiTemplate = "@asyncapi/html-template"
-val asyncApiOutputDir = "build/dist"
-
-node {
-    download.set(downloadNode)
+repositories {
+  maven {
+    url = uri("https://plugins.gradle.org/m2/")
+  }
 }
 
-val generate by tasks.registering(NpxTask::class) {
-    group = "asyncapi"
-    command.set("@asyncapi/generator")
-    args.addAll(asyncApiFile, asyncApiTemplate)
-    if(asyncApiOutputDir.isNotEmpty()) {
-        args.add("-o${asyncApiOutputDir}")
-        outputs.dir(asyncApiOutputDir)
+dependencies {
+  implementation("com.github.node-gradle:gradle-node-plugin:3.4.0")
+}
+
+gradlePlugin {
+  plugins {
+    create("asyncApi") {
+      id = "com.rivancic.asyncapi-gradle-plugin"
+      displayName = "AsyncAPI Code Generator"
+      description =
+        "Plugin that generates code based on AsyncAPI file specification. Wraps original npm AsyncApi generator."
+      implementationClass = "com.rivancic.asyncapi.gradle.AsyncApiGeneratorPlugin"
     }
-}
-
-tasks.assemble {
-    dependsOn(generate)
+  }
 }
