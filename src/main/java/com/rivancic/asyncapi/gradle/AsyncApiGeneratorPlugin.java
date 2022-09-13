@@ -36,14 +36,17 @@ public class AsyncApiGeneratorPlugin implements Plugin<Project> {
       parameters.add(getAsyncApiFile(asyncApiExtension));
       parameters.add(getAsyncApiTemplate(asyncApiExtension));
       parameters.add("-o" + getAsyncApiOutputDirectory(asyncApiExtension));
-      if (asyncApiExtension.getPrintVersion().getOrElse(false)) {
+      if (Boolean.TRUE.equals(asyncApiExtension.getPrintVersion().getOrElse(false))) {
         parameters.add("-V");
       }
-      if (asyncApiExtension.getDebug().getOrElse(false)) {
+      if (Boolean.TRUE.equals(asyncApiExtension.getDebug().getOrElse(false))) {
         parameters.add("--debug");
       }
-      if (asyncApiExtension.getForceWrite().getOrElse(false)) {
+      if (Boolean.TRUE.equals(asyncApiExtension.getForceWrite().getOrElse(false))) {
         parameters.add("--force-write");
+      }
+      if (asyncApiExtension.getParameters().isPresent()) {
+        asyncApiExtension.getParameters().get().forEach((key, value) -> parameters.add("-p" + key + "=" + value));
       }
       task.getArgs().addAll(parameters);
 
