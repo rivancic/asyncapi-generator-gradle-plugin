@@ -23,8 +23,14 @@ gradlePlugin {
       id = "com.rivancic.asyncapi-gradle-plugin"
       displayName = "AsyncAPI Code Generator"
       description =
-        "Plugin that generates code based on AsyncAPI file specification. Wraps original npm AsyncApi generator."
+        "Plugin that generates code based on AsyncAPI file specification. It wraps original npm AsyncApi generator."
       implementationClass = "com.rivancic.asyncapi.gradle.AsyncApiGeneratorPlugin"
     }
   }
+}
+
+pluginBundle {
+  website = "https://github.com/rivancic/asyncapi-generator-gradle-plugin"
+  vcsUrl = "https://github.com/rivancic/asyncapi-generator-gradle-plugin"
+  tags = listOf("asyncapi", "generator")
 }
