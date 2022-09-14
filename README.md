@@ -6,9 +6,22 @@ This way one doesn't need to care about `node` and `npm` installation within JVM
 
 ## Usage
 
-Configuration:
+To use the async generator in you Gradle build, apply the plugin:
+
+```groovy
+plugins {
+    id "com.rivancic.asyncapi-gradle-plugin" version "0.1.0"
+}
+```
+
+Plugin is available on [Gradle Plugin Portal under com.rivancic.asyncapi-gradle-plugin](https://plugins.gradle.org/plugin/com.rivancic.asyncapi-gradle-plugin).
+
+
+### Configuration
 
 One can configure following parameters through asyncapi extension:
+
+`asyncapi` and `template` parameters are required to be set.
 
 ```groovy
 asyncapi {
