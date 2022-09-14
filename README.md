@@ -36,6 +36,9 @@ asyncapi {
   // Force writing of the generated files to given directory even if it is a git repo with unstaged files or not empty 
   // dir (defaults to false)
   forceWrite = false
+
+  // Additional parameters that will be passed to templates. Have to be provided as a map.
+  parameters = [:]
 }
 ```
 
