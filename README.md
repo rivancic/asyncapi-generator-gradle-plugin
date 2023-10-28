@@ -8,9 +8,9 @@ This way one doesn't need to care about `node` and `npm` installation within JVM
 
 To use the async generator in you Gradle build, apply the plugin:
 
-```groovy
+```kotlin
 plugins {
-    id "com.rivancic.asyncapi-gradle-plugin" version "0.1.0"
+  id("com.rivancic.asyncapi-gradle-plugin") version "0.2.0"
 }
 ```
 
@@ -23,35 +23,35 @@ One can configure following parameters through asyncapi extension:
 
 `asyncapi` and `template` parameters are required to be set.
 
-```groovy
+```kotlin
 asyncapi {
 
   // You want a specific version of the generator because your template might not be compatible with the latest 
   // generator. Check what version you need and perform installation, specifying the exact version.
-  version = "1.9.8"
+  version.set("1.14.1")
   
   // Local path or URL pointing to AsyncAPI specification file
-  asyncapi = null
+  asyncapi.set(null)
 
   // Name of the generator template like for example <i>@asyncapi/html-template</i> or 
   // <i>https://github.com/asyncapi/html-template</i>
-  template = null
+  template.set(null)
 
   // Directory where to put the generated files (defaults to current directory)
-  output = "build/asyncapi"
+  output.set("build/asyncapi")
 
   // Output the version number
-  printVersion = false
+  printVersion.set(false)
 
   // Enable more specific errors in the console
-  debug = false
+  debug.set(false)
 
   // Force writing of the generated files to given directory even if it is a git repo with unstaged files or not empty 
   // dir (defaults to false)
-  forceWrite = false
+  forceWrite.set(false)
 
   // Additional parameters that will be passed to templates. Have to be provided as a map.
-  parameters = [:]
+  parameters.set(mapOf<String, String>())
 }
 ```
 
@@ -60,10 +60,10 @@ It's planned to support all the [AsyncAPI CLI options](https://github.com/asynca
 Additionally one can leverage [configuration](https://github.com/node-gradle/gradle-node-plugin/blob/3.4.0/docs/usage.md#configuring-the-plugin) 
 of `com.github.node-gradle.node` plugin with `node` extension. For example:
 
-```groovy
+```kotlin
 node {
-  download = false
-  version = "16.14.0"
+  download.set(true)
+  version.set("21.1.0")
   ...
 }
 ```
