@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-  implementation("com.github.node-gradle:gradle-node-plugin:7.0.0") {
+  implementation("com.github.node-gradle:gradle-node-plugin:7.0.1") {
     because("This plugin enables you to use a lot of Node.js-based technologies as part of your Gradle build without having Node.js installed locally on your system.")
   }
 }
