@@ -70,8 +70,8 @@ node {
 
 Tasks:
 
-| Task                |                       Description                       |  
-|---------------------|:-------------------------------------------------------:|
-| `generate`          | Generate code based on the configuration form variables | 
-| `assemble`          |               Depends on `generate` task                |
-| `clean`  |     Basic clean task, will delete `build` directory     |
+| Task               |                       Description                       |  
+|--------------------|:-------------------------------------------------------:|
+| `asyncApiGenerate` | Generate code based on the configuration form variables | 
+| `assemble`         |         Depends on `asyncApiGenerate` task              |
+| `clean`            |     Basic clean task, will delete `build` directory     |
