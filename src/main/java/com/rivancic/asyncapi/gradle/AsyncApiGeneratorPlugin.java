@@ -10,7 +10,7 @@ import java.util.List;
 
 public class AsyncApiGeneratorPlugin implements Plugin<Project> {
 
-  private static final String GENERATE_TASK_NAME = "generate";
+  private static final String GENERATE_TASK_NAME = "asyncApiGenerate";
   private static final String ASYNCAPI_TASK_GROUP = "asyncapi";
   public static final String ASYNCAPI_GENERATOR_COMMAND = "@asyncapi/generator";
   private static final String ASYNCAPI_EXTENSION_NAME = "asyncapi";
